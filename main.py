@@ -1,5 +1,5 @@
 from terminal import *
-from file import OpenFile,FileProcesses
+from file import OpenFile, FileProcesses
 from process import *
 from schedule import * 
 import os
@@ -7,7 +7,7 @@ import os
 if __name__ == "__main__":
 
     file_path = 'process.txt'
-    processes = []
+    processes = ProcessArray()
 
     while True:
         main_menu = MainMenu().show()
@@ -22,7 +22,7 @@ if __name__ == "__main__":
                     file_processes = FileProcesses(file)
                     processes_in_file = file_processes.get_process()
                 #Get and ProcessArray struct with Process
-                processes = ProcessArray(processes_in_file)
+                processes._generate_processes(processes_in_file)
                 print("Process upload successfully!")
                 input("Press Enter to continue...")
                 os.system('clear')

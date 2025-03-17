@@ -13,8 +13,8 @@ class Process:
     
 
 class ProcessArray:
-    def __init__(self, processes_in_file):
-        self.processes = self._generate_processes(processes_in_file)
+    def __init__(self):
+        self.processes = []
 
     def _generate_processes(self, processes_in_file):
         processes = []
@@ -23,6 +23,7 @@ class ProcessArray:
             execution_time = process[1] 
             priority = process[2]
             processes.append(Process(process_name, execution_time, priority))
+        self.processes = processes
         return processes
 
     def __repr__(self):
