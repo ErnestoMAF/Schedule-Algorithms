@@ -69,7 +69,7 @@ if __name__ == "__main__":
                     if option_schedule == "1":
                         scheduler.set_strategy(FCFS())
                     elif option_schedule == "2":
-                        scheduler.set_strategy(SFC())                    
+                        scheduler.set_strategy(SJF())                    
                     elif option_schedule == "3":
                         scheduler.set_strategy(Priority())
                     elif option_schedule == "4":

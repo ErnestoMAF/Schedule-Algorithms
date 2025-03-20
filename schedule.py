@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import copy
 
 class SchedulerStrategy(ABC):
     @abstractmethod
@@ -9,7 +10,7 @@ class FCFS(SchedulerStrategy):
     def schedule(self, processes):
         return processes
 
-class SFC(SchedulerStrategy):
+class SJF(SchedulerStrategy):
     def schedule(self, processes):
         # Ordenar por tiempo de ejecución (el más corto primero)
         return sorted(processes, key=lambda p: p.execution_time)
@@ -27,7 +28,7 @@ class RoundRobin(SchedulerStrategy):
     def schedule(self, processes):
         from process import Process
         scheduled_processes = []  
-        temp_processes = processes.copy()
+        temp_processes = copy.deepcopy(processes)
 
         while temp_processes:
             current_process = temp_processes.pop(0)
@@ -40,7 +41,6 @@ class RoundRobin(SchedulerStrategy):
                 scheduled_processes.append(Process(current_process.process_name, current_process.execution_time))
         return scheduled_processes
             
-
 class Scheduler:
     def set_strategy(self, strategy):
         self.strategy = strategy
